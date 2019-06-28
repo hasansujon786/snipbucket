@@ -1,0 +1,31 @@
+{
+  "id": "vue",
+  "title": "react.js",
+  "slug": "vue",
+  "description": "React.js Cheatsheet ofline",
+  "theme": "#53C1DE",
+  "topics": [
+    {
+      "title": "Centering items",
+      "items": [
+        {
+          "title": "Flex center",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
+          "code": ".flex-center {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}",
+          "type": "css"
+        }
+      ]
+    },
+    {
+      "title": "CSS Selectors",
+      "items": [
+        {
+          "title": "Same lavel element selector",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
+          "code": "input[type='checkbox'] {\n  &:checked ~ ul.link-ul {\n    display: none;\n  }\n\n  &:not(:checked) ~ label i.arrow-down {\n    transform: rotate(0deg) !important;\n  }\n}",
+          "type": "css"
+        }
+      ]
+    }
+  ]
+}

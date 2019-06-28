@@ -1,0 +1,90 @@
+{
+  "id": "vue",
+  "title": "vue.js",
+  "slug": "vue",
+  "description": "Vue.js Cheatsheet ofline",
+  "theme": "#41B883",
+  "topics": [
+    {
+      "title": "Directives",
+      "items": [
+        {
+          "title": "Show or hide elements programmatically",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
+          "code": "v-if/v-show",
+          "type": "javascript"
+        },
+        {
+          "title": "HTML attribute binding",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
+          "code": "v-bind",
+          "type": "javascript"
+        },
+        {
+          "title": "Two-way way data binding",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
+          "code": "v-model",
+          "type": "javascript"
+        },
+        {
+          "title": "HTML event binding",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
+          "code": "v-on:click",
+          "type": "javascript"
+        },
+        {
+          "title": "List rendering",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
+          "code": "v-for",
+          "type": "javascript"
+        }
+      ]
+    },
+    {
+      "title": "Binding",
+      "items": [
+        {
+          "title": "dynamic url binding",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
+          "code": ":href='url'",
+          "type": "javascript"
+        },
+        {
+          "title": "dynamic url bingin",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
+          "code": ":class='{active: isActive}'",
+          "type": "javascript"
+        },
+        {
+          "title": "dynamic style binding",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
+          "code": ":style='{color: activeColor}'",
+          "type": "javascript"
+        }
+      ]
+    },
+    {
+      "title": "Events",
+      "items": [
+        {
+          "title": "Bind event on form submits",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
+          "code": "<form @submit.prevent='addUser'>...",
+          "type": "javascript"
+        },
+        {
+          "title": "ইভেন্ট একবার সংঘটিত করতে",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
+          "code": "<a @click.once='doThis'></a>",
+          "type": "javascript"
+        },
+        {
+          "title": "Stop propagation on HTML elements",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
+          "code": "<a @click.stop='doThis'></a>",
+          "type": "javascript"
+        }
+      ]
+    }
+  ]
+}
