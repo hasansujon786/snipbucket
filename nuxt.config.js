@@ -23,12 +23,14 @@ export default {
   ** Global CSS
   */
   css: [
-    '~/assets/css/tailwind.css'
+    '~/assets/css/tailwind.css',
+    '~/assets/css/animate.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~plugins/global-components.js'
   ],
   /*
   ** Nuxt.js modules

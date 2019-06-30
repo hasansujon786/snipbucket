@@ -1,23 +1,20 @@
 <template>
-	<div class="font-sans bg-gray-100 min-h-screen text-app-textDark">
-		<Navbar/>
-		<nuxt />
-	</div>
+  <div class="font-sans bg-gray-100 min-h-screen text-app-textDark">
+    <Navbar />
+    <nuxt />
+  </div>
 </template>
 
 <script>
-	import Navbar from '~/components/Navbar.vue'
-	export default {
+import Navbar from '~/components/Navbar.vue'
 
-		name: 'app',
-
-		data () {
-			return {
-
-			}
-		},
-		components: {
-			Navbar
-		}
-	}
+export default {
+  name: 'app',
+  components: {
+    Navbar
+  },
+  created() {
+    this.$store.dispatch('lang/getAllLangList')
+  }
+}
 </script>

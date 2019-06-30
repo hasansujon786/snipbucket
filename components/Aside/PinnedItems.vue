@@ -19,47 +19,11 @@
 
 <script>
 export default {
-  data() {
-    return {
-      pinnedItems: [
-        {
-          id: '01',
-          slug: 'html',
-          title: 'HTML',
-          detail: 'Usefull HTML cheetsheet',
-          logo: 'html'
-        },
-        {
-          id: '02',
-          slug: 'css',
-          title: 'CSS',
-          detail: 'Usefull CSS cheetsheet',
-          logo: 'css'
-        },
-        {
-          id: '03',
-          slug: 'js',
-          title: 'JavaScript',
-          detail: 'Usefull JS cheetsheet',
-          logo: 'js'
-        },
-        {
-          id: '04',
-          slug: 'vue',
-          title: 'vue.js',
-          detail: 'Usefull Vue.js cheetsheet',
-          logo: 'vue'
-        },
-        {
-          id: '05',
-          slug: 'react',
-          title: 'React',
-          detail: 'Usefull React.js cheetsheet',
-          logo: 'react'
-        }
-      ]
+  props: {
+    pinnedItems: {
+      type: Array,
+      required: true
     }
-  },
-  created() {}
+  }
 }
 </script>

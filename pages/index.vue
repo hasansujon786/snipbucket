@@ -25,11 +25,6 @@ export default {
   components: {
     Card,
     SearchBar
-  },
-  created() {
-    // this.getAllLangList()
-    this.$store.dispatch('lang/getAllLangList')
-    // console.log(this.$store.getters['lang/allLangList'])
   }
 }
 </script>
