@@ -2,12 +2,26 @@
   <div>
     <section class="w-3/5 mt-16 mx-auto flex flex-col items-center">
       <h1 class="text-5xl">Snip Bucket</h1>
-      <SearchBar class="mt-2" />
+      <SearchBar @submit="jumpToApp" style="width: 600px" class="mt-2" v-model="searchInput" />
     </section>
+    <div
+      v-if="!allLangList.length"
+      class="bg-app-bgWhite py-12 mx-auto mt-20 rounded-lg text-center max-w-md"
+    >
+      <p class="w-full overflow-hidden text-app-text">
+        Nothing matched with "<span class="font-semibold">{{ searchInput }}</span
+        >"
+      </p>
+    </div>
 
     <!-- grid -->
     <section class="w-11/12 mt-8 mx-auto flex flex-wrap justify-center">
-      <Card :key="i" :lang="lang" v-for="(lang, i) in $store.getters['lang/allLangList']" />
+      <Card
+        :class="{ 'first-card': i == 0 && searchInput }"
+        :key="i"
+        :lang="lang"
+        v-for="(lang, i) in allLangList"
+      />
     </section>
   </div>
 </template>
@@ -19,12 +33,30 @@ import SearchBar from '~/components/SearchBar.vue'
 export default {
   name: 'app',
   data: () => ({
-    allLangList: []
+    searchInput: ''
   }),
-  methods: {},
+  computed: {
+    allLangList() {
+      return this.$store.getters['lang/allLangList'].filter(lang => {
+        return lang.title.toLowerCase().match(this.searchInput.toLowerCase())
+      })
+    }
+  },
+  methods: {
+    jumpToApp() {
+      if (this.allLangList.length && this.searchInput) {
+        this.$router.push({ name: 'app-langId', params: { langId: this.allLangList[0].slug } })
+      }
+    }
+  },
   components: {
     Card,
     SearchBar
   }
 }
 </script>
+<style scoped>
+.first-card {
+  @apply shadow-outline;
+}
+</style>

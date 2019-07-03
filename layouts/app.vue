@@ -1,5 +1,5 @@
 <template>
-  <div class="font-sans relative bg-gray-100 min-h-screen text-app-textDark">
+  <div class="font-sans relative  min-h-screen text-app-textDark">
     <section class="sticky top-0 ">
       <Navbar />
       <div class="relative">
@@ -66,7 +66,10 @@ export default {
     },
     onSave(data) {
       this.isModelVisble = false
-      this.pinnedItems = data
+      const filteredData = data.filter(item => {
+        return item.pinned == true
+      })
+      this.pinnedItems = filteredData
     }
   },
   components: {
@@ -114,18 +117,27 @@ export default {
         pinned: true
       }
     ]
-    const localData = JSON.parse(localStorage.getItem('pinnedItems'))
-    this.pinnedItems = localData || defaultData
+    const localData = JSON.parse(localStorage.getItem('pinnedItems')) || defaultData
+    const filteredData = localData.filter(item => {
+      return item.pinned == true
+    })
+    this.pinnedItems = filteredData
   }
 }
 </script>
 <style>
-body {
-  --primary: #3b86ff;
-  --icon-color: #718096;
-  --border-color: #cbd5e0;
-  --text-light: #718096;
-  --text-dark: #2d3748;
-  --bg: #e2e8f0;
+.btn,
+.btn-line {
+  @apply text-sm font-semibold rounded-lg h-10 px-3;
+}
+.btn:focus,
+.btn-line:focus {
+  @apply outline-none shadow-outline;
+}
+/* .btn:hover { } */
+
+.btn-line {
+  border-color: currentColor;
+  @apply border-2;
 }
 </style>

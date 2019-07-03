@@ -1,12 +1,7 @@
 <template>
   <ul>
-    <li
-      class="border-b border-app-border"
-      style=""
-      v-for="(item, index) in pinnedItems"
-      :key="index"
-    >
-      <nuxt-link class="p-4 inline-block" :to="`/app/${item.slug}`">
+    <li class="" v-for="(item, index) in pinnedItems" :key="index">
+      <nuxt-link class="p-4 block border-b border-app-border" :to="`/app/${item.slug}`">
         <img
           class="h-8 w-8 object-contain"
           :src="require(`~/assets/img/lang/${item.logo}.svg`)"
@@ -27,3 +22,13 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="css">
+.nuxt-link-exact-active {
+  background-color: var(--label-bg);
+  @apply border-t border-b-2;
+}
+li:first-child a {
+  border-top-width: 0;
+}
+</style>

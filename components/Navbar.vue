@@ -1,6 +1,6 @@
 <template>
   <header
-    class="pl-4 pr-5 py-3 flex justify-between items-center bg-app-bg border-b-2 border-app-border"
+    class="pl-4 pr-5 h-16 shadow flex justify-between items-center bg-app-bg border-b-2 border-app-border"
   >
     <div class="flex items-center">
       <icon-btn>
@@ -26,9 +26,12 @@
       </nuxt-link>
     </div>
     <nav class="flex items-center">
-      <icon-btn class="mr-2">
+      <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+        <SearchBar v-if="$route.name == 'app-langId'" class="mr-1" style="width: 20rem" />
+      </transition>
+      <icon-btn class="mr-2" @click="toggleTheme">
         <svg
-          v-if="!true"
+          v-if="theme == 'dark'"
           class="feather feather-sun"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -67,8 +70,8 @@
         </svg>
       </icon-btn>
       <nuxt-link to="/app">
-        <button class="bg-gray-500 py-2 px-8 rounded-full border border-gray-600 font-semibold">
-          Open app
+        <button class="btn bg-app-primary text-white" style="width: 152px;">
+          Manage
         </button>
       </nuxt-link>
     </nav>
@@ -76,11 +79,39 @@
 </template>
 
 <script>
+import SearchBar from '~/components/SearchBar.vue'
+
 export default {
   name: 'Navbar',
 
   data() {
     return {}
+  },
+  components: {
+    SearchBar
+  },
+  computed: {
+    theme() {
+      return this.$store.getters.getTheme
+    }
+  },
+  methods: {
+    toggleTheme() {
+      let theme
+      const el = document.querySelector('body')
+      el.getAttribute('data-theme') == 'light' ? (theme = 'dark') : (theme = 'light')
+      el.setAttribute('data-theme', theme)
+      localStorage.setItem('data-theme', theme)
+      this.$store.dispatch('setTheme', theme)
+    },
+    detectThemeOnLoad() {
+      const theme = localStorage.getItem('data-theme') || 'light'
+      document.querySelector('body').setAttribute('data-theme', theme)
+      this.$store.dispatch('setTheme', theme)
+    }
+  },
+  created() {
+    this.detectThemeOnLoad()
   }
 }
 </script>

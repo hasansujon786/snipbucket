@@ -1,5 +1,5 @@
 <template>
-  <div class="font-sans bg-gray-100 min-h-screen text-app-textDark">
+  <div class="font-sans min-h-screen text-app-textDark">
     <Navbar />
     <nuxt />
   </div>

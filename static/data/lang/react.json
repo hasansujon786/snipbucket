@@ -6,13 +6,25 @@
   "theme": "#53C1DE",
   "topics": [
     {
-      "title": "Centering items",
+      "title": "Life cycles",
       "items": [
         {
-          "title": "Flex center",
-          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
-          "code": ".flex-center {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}",
-          "type": "css"
+          "title": "রেন্ডারিং এর আগে ইনভোক হয়",
+          "description": "",
+          "code": "constructor (props)",
+          "type": "javascript"
+        },
+        {
+          "title": "রেন্ডার করে",
+          "description": "",
+          "code": "render()",
+          "type": "javascript"
+        },
+        {
+          "title": "রেন্ডারিং এর আগে ইনভোক হয়",
+          "description": "",
+          "code": "constructor (props)",
+          "type": "javascript"
         }
       ]
     },

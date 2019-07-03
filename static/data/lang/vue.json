@@ -83,6 +83,12 @@
           "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae velit natus corrupti ratione, eaque odit expedita harum doloribus quasi mollitia.",
           "code": "<a @click.stop='doThis'></a>",
           "type": "javascript"
+        },
+        {
+          "title": "Custorm input",
+          "description": "",
+          "code": "<input\n  type=\"text\"\n  placeholder=\"Searh here\"\n  v-bind=\"$attrs\"\n  @input=\"$emit('input', $event.target.value)\"\n/>",
+          "type": "javascript"
         }
       ]
     }

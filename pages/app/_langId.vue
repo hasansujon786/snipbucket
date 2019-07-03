@@ -1,32 +1,106 @@
 <template>
-  <div>
-    <section class="text-center">
+  <div class="pb-32">
+    <section class="mt-3 text-center">
       <h2 class="text-4xl">{{ lang.title }}</h2>
       <p class="text-app-text">{{ lang.description }}</p>
     </section>
-    <section class="mx-auto w-10/12" v-for="(topic, topicIndex) in lang.topics" :key="topicIndex">
-      <h2 class="text-3xl my-6"># {{ topic.title }}</h2>
+
+    <section
+      class="section-topic mt-16 mx-auto w-10/12"
+      v-for="(topic, topicIndex) in lang.topics"
+      :key="topicIndex"
+    >
+      <h2 class="text-3xl text-app-textDark"># {{ topic.title }}</h2>
       <div class="mt-3" v-for="(item, itemIndex) in topic.items" :key="itemIndex">
-        <h3 class="text-xl border-b border-app-border">{{ item.title }}</h3>
+        <h3
+          :id="item.title | splitJoin"
+          class="text-lg text-app-text font-semibold py-2 border-b-2 border-app-border"
+        >
+          {{ item.title }}
+        </h3>
         <p class="my-3 text-app-text text-sm tracking-wide">{{ item.description }}</p>
-        <div class="h-56 bg-gray-200 rounded border border-app-border "></div>
+        <prism
+          :id="(item.title + 'box') | splitJoin"
+          class="prism-block rounded-lg hadow"
+          :language="item.type"
+          >{{ item.code }}</prism
+        >
+        <div class="mb-10"></div>
       </div>
     </section>
   </div>
 </template>
 
 <script>
+import 'prismjs/themes/prism-tomorrow.css'
+import Prism from 'vue-prism-component'
+import 'prismjs'
+// import 'prismjs/themes/prism-coy.css'
+// import 'prismjs/themes/prism.css'
+
 export default {
   layout: 'app',
   name: 'langId',
+  data: () => ({
+    code: 'const a = b'
+  }),
   computed: {
     lang() {
       return this.$store.getters['lang/selectedLang']
     }
   },
-  methods: {},
+  components: {
+    Prism
+  },
   created() {
     this.$store.dispatch('lang/getSelectedLang', this.$route.params.langId)
+    console.log(this.$route.name)
+  },
+  filters: {
+    splitJoin(text) {
+      return text
+        .toLowerCase()
+        .split(' ')
+        .join('')
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.scrollIntoView {
+  background-color: var(--label-bg);
+  color: #3b86ff;
+}
+
+h3 {
+  transition: background-color 0.4s ease-out;
+}
+
+pre.prism-block {
+  background-color: #283243;
+
+  &::-webkit-scrollbar {
+    height: 10px;
+  }
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px rgba(66, 66, 66, 0.3);
+      background: #1d1d1d;
+      &:active {
+        background: hsl(0, 0%, 9%);
+      }
+    }
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(136, 136, 136, 0.3);
+      background: hsl(0, 0%, 25%);
+    }
+  }
+}
+</style>

@@ -16,12 +16,13 @@ module.exports = {
       black: '#000',
       white: '#fff',
       app: {
-        primary: 'var(--primary)',
         icon: '#718096',
-        border: '#cbd5e0',
-        text: '#718096',
-        textDark: '#2d3748',
-        bg: '#e2e8f0'
+        text: 'var(--text-light)',
+        primary: 'var(--primary)',
+        border: 'var(--border-color)',
+        textDark: 'var(--text-dark)',
+        bgWhite: 'var(--bg-white)',
+        bg: 'var(--bg)'
       },
       gray: {
         100: '#f7fafc',
@@ -153,7 +154,8 @@ module.exports = {
       '40': '10rem',
       '48': '12rem',
       '56': '14rem',
-      '64': '16rem'
+      '64': '16rem',
+      '125': '31.25rem'
     },
     backgroundColor: theme => theme('colors'),
     backgroundPosition: {
@@ -191,7 +193,7 @@ module.exports = {
       '8': '8px'
     },
     boxShadow: {
-      default: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+      default: 'var(--shadow-default)',
       md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',

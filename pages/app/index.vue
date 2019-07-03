@@ -1,65 +1,40 @@
 <template>
-	<div class="relative">
-		<div>
-			<p class="mb-40">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-
-			<p class="mb-40">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-
-			<p class="mb-40">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-
-			<p class="mb-40">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-
-			<p class="mb-40">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-		</div>
-
-	</div>
+  <div class="top">
+    <div class="mx-auto mt-20" style="width: 43.75rem">
+      <textarea
+        id="textarea-copy"
+        v-model="codeContent"
+        class="w-full border rounded-lg py-1 px-2 focus:shadow-outline focus:outline-none"
+        rows="15"
+      ></textarea>
+      <div class="mt-3 flex justify-end items-center">
+        <button @click="copyContent" class="btn-line text-app-primary w-32">Copy</button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+export default {
+  // layout: 'app',
+  name: 'app',
 
-	export default {
-		layout: 'app',
-		name: 'app',
-
-		data () {
-			return {
-
-			}
-		}
-	}
+  data() {
+    return {
+      codeContent: ''
+    }
+  },
+  methods: {
+    copyContent() {
+      if (!this.codeContent) {
+        return
+      }
+      const el = document.getElementById('textarea-copy')
+      const str = JSON.stringify(this.codeContent)
+      el.value = str
+      el.select()
+      document.execCommand('copy')
+    }
+  }
+}
 </script>

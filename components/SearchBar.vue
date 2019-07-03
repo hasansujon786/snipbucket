@@ -1,14 +1,17 @@
 <template>
   <div class="text-app-textDark flex items-center">
-    <input
-      class="px-4 font-semibold border border-app-border rounded-full h-12 
-      focus:outline-none bg-white focus:border-app-icon focus:shadow-md"
-      style="width: 600px"
-      type="text"
-      placeholder="Searh here"
-      onfocus="this.placeholder=''"
-      onblur="this.placeholder='Search here'"
-    />
+    <form @submit.prevent="$emit('submit')" class="w-full">
+      <input
+        class="px-4 h-12 w-full bg-app-bgWhite border border-app-border shadow rounded-full 
+        focus:outline-none focus:shadow-md"
+        type="text"
+        placeholder="Searh here"
+        onfocus="this.placeholder=''"
+        onblur="this.placeholder='Search here'"
+        v-bind="$attrs"
+        @input="$emit('input', $event.target.value)"
+      />
+    </form>
 
     <svg
       class="-ml-10 text-app-icon"
@@ -30,10 +33,12 @@
 
 <script>
 export default {
-  name: 'SearchBar',
-
-  data() {
-    return {}
-  }
+  name: 'SearchBar'
 }
 </script>
+
+<style scoped>
+input {
+  transition: box-shadow 0.3s ease;
+}
+</style>

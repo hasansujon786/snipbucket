@@ -7,21 +7,24 @@
         v-show="show"
       ></div>
     </transition>
-    <transition enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
+    <transition
+      enter-active-class="animated fadeInUp fast"
+      leave-active-class="animated fadeOutDown faster"
+    >
       <!-- Card -->
       <section
         v-show="show"
-        class="model flex flex-col fixed rounded bg-white shadow border border-app-border"
+        class="model flex flex-col fixed bg-app-bg rounded shadow-lg"
       >
         <header
-          class="flex justify-between items-center bg-gray-100 pl-3 rounded-t border-b border-app-border"
+          class="flex justify-between items-center text-app-text h-12 px-6 leading-none rounded-t border-app-border border-b-2"
         >
-          <h3 class="font-semibold text-sm tracking-wide">Pinned items</h3>
-          <button class="p-2 text-app-icon focus:text-red-500 focus:outline-none" @click="cancel">
+          <h3 class="font-semibold tracking-wide">Pinned items</h3>
+          <button class="text-app-icon focus:text-red-500 focus:outline-none" @click="cancel">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="22"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -35,19 +38,21 @@
           </button>
         </header>
         <!-- body -->
-        <div class="px-3 text-xs flex-grow">
-          <ul class="ks-cboxtags pt-1">
-            <li class="inline mx-1" v-for="(item, index) in pinnedItems" :key="index">
-              <span :class="{ added: item.pinned }" @click="addToPinned(index)" :for="item.title">{{
-                item.title
-              }}</span>
+        <div class="px-8 text-xs flex-grow">
+          <ul class="">
+            <li class="border-b border-app-border flex justify-between items-center text-xl py-2 text-app-textDark" v-for="(item, index) in pinnedItems" :key="index"> 
+              <span >{{ item.title }}</span>
+
+              <button class="checkbox" :class="{ added: item.pinned }"
+              @click="addToPinned(index)">{{ item.pinned ? '&check;' : '' }}</button>
             </li>
           </ul>
           <div></div>
         </div>
         <!-- footer -->
-        <div class="flex justify-end items-center p-3">
-          <button @click="save" class="bg-app-primary text-white px-4 py-1 rounded">Save</button>
+        <div class="flex justify-end items-center px-8 py-5">
+          <button @click="cancel" class="text-gray-500 mr-6 font-semibold focus:outline-none hover:text-blue-500">Cancel</button>
+          <button @click="save" class="text-app-primary font-semibold focus:outline-none hover:text-blue-500">Save</button>
         </div>
       </section>
     </transition>
@@ -82,16 +87,14 @@ export default {
       this.$emit('cancel')
     },
     save() {
-      const filteredData = this.pinnedItems.filter(item => {
-        return item.pinned == true
-      })
       // send data to Aside
-      this.$emit('save', filteredData)
-      localStorage.setItem('pinnedItems', JSON.stringify(filteredData))
+      this.$emit('save', this.pinnedItems)
+      localStorage.setItem('pinnedItems', JSON.stringify(this.pinnedItems))
     },
     onCardMount() {
       // Clone form store to mutate the data independently
-      this.pinnedItems = [...this.allLangList]
+      // go to vuex if localData is null
+      this.pinnedItems = JSON.parse(localStorage.getItem('pinnedItems')) || [...this.allLangList]
       // add "pinned" key to every item in arr
       this.pinnedItems.map(obj => {
         if (!obj.hasOwnProperty('pinned')) {
@@ -100,6 +103,7 @@ export default {
       })
     },
     addToPinned(index) {
+      // chnage pinned Boolean
       this.pinnedItems[index].pinned = !this.pinnedItems[index].pinned
       this.pinnedItems.splice(index, 1, this.pinnedItems[index])
       // this.$set(this.pinnedItems, index, this.pinnedItems[index])
@@ -108,64 +112,29 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .model-background {
   background: #64676b6b;
 }
 .model {
   top: 10rem;
-  width: 400px;
+  width: 500px;
   left: 50%;
-  margin-left: -200px;
+  margin-left: -250px;
   min-height: 256px;
 }
+.checkbox {
+  @apply h-8 w-8 bg-blue-200 text-white font-semibold border-2 rounded-lg; 
+  transition: background-color .4s ease;
 
-ul.ks-cboxtags li span {
-  display: inline-block;
-  background-color: rgba(255, 255, 255, 0.9);
-  border: 2px solid rgba(139, 139, 139, 0.3);
-  color: #adadad;
-  border-radius: 25px;
-  white-space: nowrap;
-  margin: 3px 0px;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  transition: all 0.2s;
+  &:focus {
+    @apply shadow-outline outline-none
+  }
+  &:hover {
+    @apply border-app-primary;
+  }
 }
-
-ul.ks-cboxtags li span {
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-ul.ks-cboxtags li span::before {
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  font-size: 12px;
-  padding: 2px 6px 2px 2px;
-  content: '\2795';
-  transition: transform 0.3s ease-in-out;
-}
-
-ul.ks-cboxtags li span.added::before {
-  content: '\2796';
-  transform: rotate(-360deg);
-  transition: transform 0.3s ease-in-out;
-}
-
-ul.ks-cboxtags li span.added {
-  border: 2px solid #1bdbf8;
-  background-color: #12bbd4;
-  color: #fff;
-  transition: all 0.2s;
+.added {
+  @apply bg-app-primary border-app-primary;
 }
 </style>

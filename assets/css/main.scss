@@ -1,0 +1,67 @@
+.dbug *:not(path):not(g) {
+  /*! debug.css | MIT License | zaydek.github.com/debug.css */
+  color: hsla(210, 100%, 100%, 0.9) !important;
+  background: hsla(210, 100%, 50%, 0.5) !important;
+  outline: solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
+
+  box-shadow: none !important;
+}
+
+body {
+  --primary: #3b86ff;
+  /* --primary: #f56565; */
+  --icon-color: #718096;
+  --border-color: #cbd5e0;
+  --text-light: #718096;
+  --text-dark: #2d3748;
+
+  --label-bg: #e6eaf1;
+  --bg: #f7fafc;
+  --bg-white: #fff;
+  --shadow-default: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+  /* dark-theme */
+  &[data-theme='dark'] {
+    --text-dark: #cbd5e0;
+
+    --border-color: #293d5a;
+
+    --bg: #283243;
+    --label-bg: #202a38;
+    --bg-white: #202a38;
+    --bg-body: #1c2532;
+
+    --shadow-default: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+
+    // --shadow-default: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+}
+
+body {
+  background-color: var(--bg-body);
+}
+
+.disable-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.scrolable {
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #e2e8f0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #c1c3c7;
+
+    &:hover {
+      background-color: tomato;
+    }
+  }
+}

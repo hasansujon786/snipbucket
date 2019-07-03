@@ -1,4 +1,3 @@
-
 export default {
   mode: 'spa',
   /*
@@ -18,13 +17,14 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#1C2532' },
   /*
   ** Global CSS
   */
   css: [
     '~/assets/css/tailwind.css',
-    '~/assets/css/animate.css'
+    '~/assets/css/animate.css',
+    '~/assets/css/main.scss'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -38,8 +38,12 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
+    // '@nuxtjs/pwa',
   ],
+  devModules: [
+    // '@nuxtjs/tailwindcss'
+  ],
+
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
