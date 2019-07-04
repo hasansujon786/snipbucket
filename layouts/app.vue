@@ -1,9 +1,9 @@
 <template>
   <div class="font-sans relative  min-h-screen text-app-textDark">
     <section class="sticky top-0 ">
-      <Navbar />
+      <Navbar @toggleMenu="toggleRightSideMenu" />
       <div class="relative">
-        <Aside class="left-0 border-r-2">
+        <Aside class="left-0 border-r-2 hidden md:block">
           <PinnedItems :pinnedItems="pinnedItems" />
           <!-- button section -->
           <div class="flex items-center justify-center pb-2 absolute bottom-0 w-full">
@@ -28,13 +28,21 @@
             </icon-btn>
           </div>
         </Aside>
-
-        <Aside class="right-0 border-l-2">
+        <div
+          @click="showRightMenu = false"
+          v-show="showRightMenu"
+          class="overlay-bg apply absolute top-0 left-0 w-screen h-screen"
+        ></div>
+        <Aside
+          ref="rSMenu"
+          :class="{ showRightMenu: showRightMenu }"
+          class="right-0 border-l-2 rSMenuCls"
+        >
           <MenuList />
         </Aside>
       </div>
     </section>
-    <div class="pl-16 pr-64">
+    <div class="md:pl-16 lg:pr-64">
       <nuxt />
     </div>
     <model-bg @save="onSave" :show="isModelVisble" @cancel="closePopup"></model-bg>
@@ -54,7 +62,8 @@ export default {
   data() {
     return {
       isModelVisble: false,
-      pinnedItems: []
+      pinnedItems: [],
+      showRightMenu: false
     }
   },
   methods: {
@@ -70,6 +79,9 @@ export default {
         return item.pinned == true
       })
       this.pinnedItems = filteredData
+    },
+    toggleRightSideMenu() {
+      this.showRightMenu = !this.showRightMenu
     }
   },
   components: {
@@ -126,6 +138,11 @@ export default {
 }
 </script>
 <style>
+.showRightMenu {
+  display: block;
+  transform: translate(0px) !important;
+}
+
 .btn,
 .btn-line {
   @apply text-sm font-semibold rounded-lg h-10 px-3;
@@ -139,5 +156,14 @@ export default {
 .btn-line {
   border-color: currentColor;
   @apply border-2;
+}
+
+@media screen and (max-width: 1023px) {
+  aside.rSMenuCls {
+    transform: translateX(260px);
+  }
+}
+body {
+  overflow-x: hidden;
 }
 </style>

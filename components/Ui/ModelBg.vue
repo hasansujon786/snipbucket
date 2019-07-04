@@ -3,7 +3,7 @@
     <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
       <div
         @click="cancel"
-        class="model-background absolute top-0 left-0 w-full h-full"
+        class="overlay-bg absolute top-0 left-0 w-full h-full"
         v-show="show"
       ></div>
     </transition>
@@ -20,7 +20,7 @@
           class="flex justify-between items-center text-app-text h-12 px-6 leading-none rounded-t border-app-border border-b-2"
         >
           <h3 class="font-semibold tracking-wide">Pinned items</h3>
-          <button class="text-app-icon focus:text-red-500 focus:outline-none" @click="cancel">
+          <button class="text-app-icon focus:text-red-500 hover:text-red-500 focus:outline-none" @click="cancel">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -38,11 +38,12 @@
           </button>
         </header>
         <!-- body -->
-        <div class="px-8 text-xs flex-grow">
+        <div class="text-xs flex-grow">
           <ul class="">
-            <li class="border-b border-app-border flex justify-between items-center text-xl py-2 text-app-textDark" v-for="(item, index) in pinnedItems" :key="index"> 
-              <span >{{ item.title }}</span>
+            <li class="list-items px-8 border-b border-app-border flex justify-between items-center text-xl py-2 text-app-textDark" 
+              v-for="(item, index) in pinnedItems" :key="index"> 
 
+              <span >{{ item.title }}</span>
               <button class="checkbox" :class="{ added: item.pinned }"
               @click="addToPinned(index)">{{ item.pinned ? '&check;' : '' }}</button>
             </li>
@@ -114,7 +115,7 @@ export default {
 
 <style lang="scss" scoped>
 .model-background {
-  background: #64676b6b;
+  background-color: rgba(28, 37, 50, .7);
 }
 .model {
   top: 10rem;
@@ -124,17 +125,20 @@ export default {
   min-height: 256px;
 }
 .checkbox {
-  @apply h-8 w-8 bg-blue-200 text-white font-semibold border-2 rounded-lg; 
-  transition: background-color .4s ease;
-
-  &:focus {
-    @apply shadow-outline outline-none
-  }
-  &:hover {
-    @apply border-app-primary;
+  @apply border-2 text-white font-semibold rounded-app; 
+  font-size: 17px;
+  background-color: #D7E7FF;
+  border-color: #C3DAFF;
+  width: 30px;
+  height: 30px;
+  &:focus, &:hover {
+    @apply  outline-none shadow-outline;
   }
 }
 .added {
   @apply bg-app-primary border-app-primary;
+}
+.list-items:hover {
+  background-color: var(--label-bg);
 }
 </style>

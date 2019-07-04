@@ -3,7 +3,7 @@
     class="pl-4 pr-5 h-16 shadow flex justify-between items-center bg-app-bg border-b-2 border-app-border"
   >
     <div class="flex items-center">
-      <icon-btn>
+      <icon-btn @click="$emit('toggleMenu')">
         <svg
           class="absolute icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@
     </div>
     <nav class="flex items-center">
       <transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
-        <SearchBar v-if="$route.name == 'app-langId'" class="mr-1" style="width: 20rem" />
+        <SearchBar v-if="$route.name == 'app-langId'" class="mr-1 hidden" style="width: 20rem" />
       </transition>
       <icon-btn class="mr-2" @click="toggleTheme">
         <svg
@@ -69,7 +69,7 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       </icon-btn>
-      <nuxt-link to="/app">
+      <nuxt-link to="/app" class="hidden sm:block">
         <button class="btn bg-app-primary text-white" style="width: 152px;">
           Manage
         </button>

@@ -1,20 +1,20 @@
 <template>
   <div class="pb-32">
     <section class="mt-3 text-center">
-      <h2 class="text-4xl">{{ lang.title }}</h2>
+      <h2 class="text-4xl font-semibold">{{ lang.title }}</h2>
       <p class="text-app-text">{{ lang.description }}</p>
     </section>
 
     <section
-      class="section-topic mt-16 mx-auto w-10/12"
+      class="section-topic mt-16  mx-auto w-11/12 md:w-10/12"
       v-for="(topic, topicIndex) in lang.topics"
       :key="topicIndex"
     >
       <h2 class="text-3xl text-app-textDark"># {{ topic.title }}</h2>
-      <div class="mt-3" v-for="(item, itemIndex) in topic.items" :key="itemIndex">
+      <div class="mt-6" v-for="(item, itemIndex) in topic.items" :key="itemIndex">
         <h3
           :id="item.title | splitJoin"
-          class="text-lg text-app-text font-semibold py-2 border-b-2 border-app-border"
+          class="text-2xl text-app-textDark ont-semibold py-2 border-b-2 border-app-border"
         >
           {{ item.title }}
         </h3>
@@ -70,7 +70,11 @@ export default {
 <style lang="scss" scoped>
 .scrollIntoView {
   background-color: var(--label-bg);
-  color: #3b86ff;
+  // color: #fff;
+
+  & ~ .prism-block {
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  }
 }
 
 h3 {
@@ -79,6 +83,7 @@ h3 {
 
 pre.prism-block {
   background-color: #283243;
+  transition: all 0.3s ease-out;
 
   &::-webkit-scrollbar {
     height: 10px;
