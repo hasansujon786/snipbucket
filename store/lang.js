@@ -1,4 +1,4 @@
-const url = 'https://github.com/hasansujon786/snipbucket/blob/master/static/data'
+const url = '/data'
 export const state = () => ({
   allLangList: [],
   selectedLang: {}
