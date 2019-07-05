@@ -1,3 +1,4 @@
+const url = 'https://github.com/hasansujon786/snipbucket/blob/master/static/data'
 export const state = () => ({
   allLangList: [],
   selectedLang: {}
@@ -14,12 +15,12 @@ export const mutations = {
 // actions ==============================
 export const actions = {
   getAllLangList({ commit }) {
-    this.$axios.$get('/data/index.json').then(data => {
+    this.$axios.$get(`${url}/index.json`).then(data => {
       commit('_getAllLangList', data)
     })
   },
   getSelectedLang({ commit }, langId) {
-    this.$axios.$get(`/data/lang/${langId}.json`).then(data => {
+    this.$axios.$get(`${url}/lang/${langId}.json`).then(data => {
       commit('_getSelectedLang', data)
     })
   }
