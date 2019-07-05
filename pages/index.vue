@@ -1,14 +1,13 @@
 <template>
   <div class="dbu">
     <h1 class="text-5xl mt-16 mb-6 text-center">Snip Bucket</h1>
-    <div ref="searchBar" class="searchBar mx-auto">
-      <SearchBar @submit="jumpToApp" class="mt-2" v-model="searchInput" />
+    <div ref="searchBarWrapper" class="searchBarWrapper w-11/12 sm:w-4/5 md:w-3/5 mx-auto">
+      <SearchBar @submit="jumpToApp" v-model="searchInput" />
     </div>
-    <div class="h-8"></div>
 
     <div
-      v-if="!allLangList.length"
-      class="bg-app-bgWhite py-12 mx-auto rounded-lg text-center max-w-md"
+      v-show="!allLangList.length && searchInput"
+      class="bg-app-bgWhite mt-8 py-12 mx-auto rounded-lg text-center max-w-md"
     >
       <p class="w-full overflow-hidden text-app-text">
         Nothing matched with "<span class="font-semibold">{{ searchInput }}</span
@@ -17,14 +16,22 @@
     </div>
 
     <!-- grid -->
-    <section class="sm:w-11/12 mt-8 mx-auto flex flex-wrap justify-center">
+    <section class="sm:w-11/12 mt-12 mx-auto flex flex-wrap justify-center">
       <Card
         :class="{ 'first-card': i == 0 && searchInput }"
         :key="i"
         :lang="lang"
         v-for="(lang, i) in allLangList"
       />
+      <Card
+        :class="{ 'first-card': i == 0 && searchInput }"
+        :key="i + 'hasan'"
+        :lang="lang"
+        v-for="(lang, i) in allLangList"
+      />
     </section>
+
+    <div class="h-20 md:h-32"></div>
   </div>
 </template>
 
@@ -64,14 +71,13 @@ export default {
     }
 
     const scrollFunction = () => {
-      const searchBar = this.$refs.searchBar
+      const searchBarWrapper = this.$refs.searchBarWrapper
       const input = document.querySelector('input')
-      // if (document.body.scrollTop >  || document.documentElement.scrollTop > 100) {
-      if (searchBar.offsetTop > 224) {
-        searchBar.style.width = '100%'
+      if (searchBarWrapper.offsetTop > 224) {
+        searchBarWrapper.classList.add('width-full')
         input.style.borderRadius = '0px'
       } else {
-        searchBar.style.width = '90%'
+        searchBarWrapper.classList.remove('width-full')
         input.style.borderRadius = '30px'
       }
     }
@@ -82,11 +88,12 @@ export default {
 .first-card {
   @apply shadow-outline;
 }
-.searchBar {
-  /* background-color: antiquewhite; */
-  width: 90%;
+.searchBarWrapper {
   position: -webkit-sticky;
   position: sticky;
   top: 0px;
+}
+.width-full {
+  width: 100% !important;
 }
 </style>

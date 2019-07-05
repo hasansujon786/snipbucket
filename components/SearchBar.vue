@@ -36,9 +36,3 @@ export default {
   name: 'SearchBar'
 }
 </script>
-
-<style scoped>
-input {
-  transition: box-shadow 0.3s ease;
-}
-</style>

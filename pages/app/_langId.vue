@@ -68,12 +68,8 @@ export default {
 
 <style lang="scss" scoped>
 .scrollIntoView {
-  background-color: var(--label-bg);
-  // color: #fff;
-
-  & ~ .prism-block {
-    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
-  }
+  // background-color: var(--label-bg);
+  color: var(--primary);
 }
 
 h3 {

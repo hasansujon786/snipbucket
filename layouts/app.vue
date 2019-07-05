@@ -34,7 +34,7 @@
           class="overlay-bg apply absolute top-0 left-0 w-screen h-screen"
         ></div>
         <Aside ref="rSMenu" class="right-0 border-l-2 rSMenuCls">
-          <MenuList />
+          <MenuList @link-clicked="toggleRightSideMenu" :showRightMenu="showRightMenu" />
         </Aside>
       </div>
     </section>
@@ -78,14 +78,7 @@ export default {
     },
     toggleRightSideMenu() {
       const el = this.$refs.rSMenu.$el
-      if (el.style.display == 'block') {
-        el.style.transform = 'translateX(260px)'
-        setTimeout(() => (el.style.display = 'none'), 300)
-      } else {
-        el.style.display = 'block'
-        // el.style.transform = 'translateX(0px)'
-        setTimeout(() => (el.style.transform = 'translateX(0px)'), 50)
-      }
+      el.classList.toggle('translateX0')
       this.showRightMenu = !this.showRightMenu
     }
   },
@@ -143,10 +136,9 @@ export default {
 }
 </script>
 <style>
-.showRightMenu {
-  /* transform: translate(0px) !important; */
+body {
+  overflow-x: hidden;
 }
-
 .btn,
 .btn-line {
   @apply text-sm font-semibold rounded-lg h-10 px-3;
@@ -156,24 +148,18 @@ export default {
   @apply outline-none shadow-outline;
 }
 /* .btn:hover { } */
-
 .btn-line {
   border-color: currentColor;
   @apply border-2;
 }
 
+.translateX0 {
+  transform: translateX(0px) !important;
+}
+
 @media screen and (max-width: 1023px) {
   aside.rSMenuCls {
     transform: translateX(260px);
-    display: none;
   }
-}
-@media screen and (min-width: 1024px) {
-  aside.rSMenuCls {
-    display: block !important;
-  }
-}
-body {
-  overflow-x: hidden;
 }
 </style>

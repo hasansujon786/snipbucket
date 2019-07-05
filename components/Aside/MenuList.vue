@@ -40,8 +40,11 @@
 
 <script>
 export default {
-  data() {
-    return {}
+  props: {
+    showRightMenu: {
+      type: Boolean,
+      default: false
+    }
   },
   computed: {
     topics() {
@@ -50,17 +53,18 @@ export default {
   },
   methods: {
     scrollToView(title) {
+      this.showRightMenu ? this.$emit('link-clicked') : ''
       const id = title
         .toLowerCase()
         .split(' ')
         .join('')
+      const h3 = document.getElementById(id)
 
-      document.getElementById(id + 'box').scrollIntoView({
+      h3.scrollIntoView({
         block: 'center',
         behavior: 'smooth'
       })
 
-      const h3 = document.getElementById(id)
       h3.classList.add('scrollIntoView')
       setTimeout(() => {
         h3.classList.remove('scrollIntoView')
