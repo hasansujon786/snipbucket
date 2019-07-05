@@ -39,6 +39,7 @@ body {
 
 body {
   background-color: var(--bg-body);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .disable-select {

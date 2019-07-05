@@ -1,6 +1,6 @@
 <template>
   <div class="font-sans relative  min-h-screen text-app-textDark">
-    <section class="sticky top-0 ">
+    <section class="fixed top-0 w-full">
       <Navbar @toggleMenu="toggleRightSideMenu" />
       <div class="relative">
         <Aside class="left-0 border-r-2 hidden md:block">
@@ -29,7 +29,7 @@
           </div>
         </Aside>
         <div
-          @click="showRightMenu = false"
+          @click="toggleRightSideMenu"
           v-show="showRightMenu"
           class="overlay-bg apply absolute top-0 left-0 w-screen h-screen"
         ></div>
@@ -42,7 +42,7 @@
         </Aside>
       </div>
     </section>
-    <div class="md:pl-16 lg:pr-64">
+    <div class="md:pl-16 lg:pr-64 pt-16">
       <nuxt />
     </div>
     <model-bg @save="onSave" :show="isModelVisble" @cancel="closePopup"></model-bg>
@@ -81,6 +81,15 @@ export default {
       this.pinnedItems = filteredData
     },
     toggleRightSideMenu() {
+      const el = this.$refs.rSMenu.$el
+      if (el.style.display == 'block') {
+        el.style.transform = 'translateX(260px)'
+        setTimeout(() => (el.style.display = 'none'), 300)
+      } else {
+        el.style.display = 'block'
+        // el.style.transform = 'translateX(0px)'
+        setTimeout(() => (el.style.transform = 'translateX(0px)'), 50)
+      }
       this.showRightMenu = !this.showRightMenu
     }
   },
@@ -139,8 +148,7 @@ export default {
 </script>
 <style>
 .showRightMenu {
-  display: block;
-  transform: translate(0px) !important;
+  /* transform: translate(0px) !important; */
 }
 
 .btn,
@@ -161,6 +169,7 @@ export default {
 @media screen and (max-width: 1023px) {
   aside.rSMenuCls {
     transform: translateX(260px);
+    display: none;
   }
 }
 body {

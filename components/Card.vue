@@ -3,9 +3,11 @@
     :to="`/app/${lang.slug}`"
     class="mx-2 mb-6 bg-app-bgWhite shadow hover:shadow-lg focus:shadow-lg focus:outline-none"
   >
-    <div class="w-40 py-5 h-56 flex flex-col justify-center items-center">
+    <div
+      class="w-32 h-40 sm:w-40 sm:h-56 text-center py-5 px-2 flex flex-col justify-center items-center"
+    >
       <img
-        class="h-16 flex-1 w-16 object-contain "
+        class="flex-1 w-10 h-10 sm:w-16 sm:h-16 object-contain "
         :src="require(`~/assets/img/lang/${lang.logo}.svg`)"
         alt=""
       />

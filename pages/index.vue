@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <section class="w-3/5 mt-16 mx-auto flex flex-col items-center">
+  <div class="dbu">
+    <section class="mt-16 mx-auto flex flex-col items-center">
       <h1 class="text-5xl">Snip Bucket</h1>
-      <SearchBar @submit="jumpToApp" style="width: 600px" class="mt-2" v-model="searchInput" />
+      <div class="w-full px-3 max-w-xl">
+        <SearchBar @submit="jumpToApp" class="mt-2" v-model="searchInput" />
+      </div>
     </section>
     <div
       v-if="!allLangList.length"
@@ -15,7 +17,7 @@
     </div>
 
     <!-- grid -->
-    <section class="w-11/12 mt-8 mx-auto flex flex-wrap justify-center">
+    <section class="sm:w-11/12 mt-8 mx-auto flex flex-wrap justify-center">
       <Card
         :class="{ 'first-card': i == 0 && searchInput }"
         :key="i"
