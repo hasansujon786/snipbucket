@@ -54,7 +54,6 @@ export default {
   },
   created() {
     this.$store.dispatch('lang/getSelectedLang', this.$route.params.langId)
-    console.log(this.$route.name)
   },
   filters: {
     splitJoin(text) {
