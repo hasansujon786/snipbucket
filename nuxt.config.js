@@ -23,7 +23,12 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['~/assets/css/tailwind.css', '~/assets/css/animate.css', '~/assets/css/main.scss'],
+  css: [
+    '~/assets/css/tailwind.css',
+    '~/assets/css/animate.css',
+    '~/assets/css/main.scss',
+    '~/assets/css/prism-tomorrow.css'
+  ],
   /*
    ** Plugins to load before mounting the App
    */
@@ -36,9 +41,7 @@ export default {
     '@nuxtjs/axios'
     // '@nuxtjs/pwa',
   ],
-  devModules: [
-    // '@nuxtjs/tailwindcss'
-  ],
+  devModules: ['@nuxtjs/tailwindcss'],
 
   /*
    ** Axios module configuration

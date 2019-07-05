@@ -33,11 +33,7 @@
           v-show="showRightMenu"
           class="overlay-bg apply absolute top-0 left-0 w-screen h-screen"
         ></div>
-        <Aside
-          ref="rSMenu"
-          :class="{ showRightMenu: showRightMenu }"
-          class="right-0 border-l-2 rSMenuCls"
-        >
+        <Aside ref="rSMenu" class="right-0 border-l-2 rSMenuCls">
           <MenuList />
         </Aside>
       </div>
@@ -170,6 +166,11 @@ export default {
   aside.rSMenuCls {
     transform: translateX(260px);
     display: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  aside.rSMenuCls {
+    display: block !important;
   }
 }
 body {

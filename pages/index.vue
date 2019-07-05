@@ -1,14 +1,14 @@
 <template>
   <div class="dbu">
-    <section class="mt-16 mx-auto flex flex-col items-center">
-      <h1 class="text-5xl">Snip Bucket</h1>
-      <div class="w-full px-3 max-w-xl">
-        <SearchBar @submit="jumpToApp" class="mt-2" v-model="searchInput" />
-      </div>
-    </section>
+    <h1 class="text-5xl mt-16 mb-6 text-center">Snip Bucket</h1>
+    <div ref="searchBar" class="searchBar mx-auto">
+      <SearchBar @submit="jumpToApp" class="mt-2" v-model="searchInput" />
+    </div>
+    <div class="h-8"></div>
+
     <div
       v-if="!allLangList.length"
-      class="bg-app-bgWhite py-12 mx-auto mt-20 rounded-lg text-center max-w-md"
+      class="bg-app-bgWhite py-12 mx-auto rounded-lg text-center max-w-md"
     >
       <p class="w-full overflow-hidden text-app-text">
         Nothing matched with "<span class="font-semibold">{{ searchInput }}</span
@@ -54,11 +54,39 @@ export default {
   components: {
     Card,
     SearchBar
+  },
+  beforeDestroy() {
+    window.onscroll = null
+  },
+  mounted() {
+    window.onscroll = function() {
+      scrollFunction()
+    }
+
+    const scrollFunction = () => {
+      const searchBar = this.$refs.searchBar
+      const input = document.querySelector('input')
+      // if (document.body.scrollTop >  || document.documentElement.scrollTop > 100) {
+      if (searchBar.offsetTop > 224) {
+        searchBar.style.width = '100%'
+        input.style.borderRadius = '0px'
+      } else {
+        searchBar.style.width = '90%'
+        input.style.borderRadius = '30px'
+      }
+    }
   }
 }
 </script>
 <style scoped>
 .first-card {
   @apply shadow-outline;
+}
+.searchBar {
+  /* background-color: antiquewhite; */
+  width: 90%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
 }
 </style>

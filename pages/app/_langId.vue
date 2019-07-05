@@ -1,5 +1,5 @@
 <template>
-  <div class="pb-32">
+  <div>
     <section class="mt-3 text-center">
       <h2 class="text-4xl font-semibold">{{ lang.title }}</h2>
       <p class="text-app-text">{{ lang.description }}</p>
@@ -25,14 +25,14 @@
           :language="item.type"
           >{{ item.code }}</prism
         >
-        <div class="mb-10"></div>
       </div>
     </section>
+    <div class="h-20 md:h-32"></div>
   </div>
 </template>
 
 <script>
-import 'prismjs/themes/prism-tomorrow.css'
+// import 'prismjs/themes/prism-tomorrow.css'
 import Prism from 'vue-prism-component'
 import 'prismjs'
 // import 'prismjs/themes/prism-coy.css'
