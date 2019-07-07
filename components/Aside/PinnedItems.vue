@@ -1,6 +1,6 @@
-<template>
+<template functional>
   <ul>
-    <li class="" v-for="(item, index) in pinnedItems" :key="index">
+    <li class="" v-for="(item, index) in props.pinnedItems" :key="index">
       <nuxt-link class="p-4 block border-b border-app-border" :to="`/app/${item.slug}`">
         <img
           class="h-8 w-8 object-contain"

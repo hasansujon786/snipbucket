@@ -1,6 +1,6 @@
-<template>
+<template functional>
   <nuxt-link
-    :to="`/app/${lang.slug}`"
+    :to="`/app/${props.lang.slug}`"
     class="mx-2 mb-6 bg-app-bgWhite shadow hover:shadow-lg focus:shadow-lg focus:outline-none"
   >
     <div
@@ -8,11 +8,11 @@
     >
       <img
         class="flex-1 w-10 h-10 sm:w-16 sm:h-16 object-contain "
-        :src="require(`~/assets/img/lang/${lang.logo}.svg`)"
+        :src="require(`~/assets/img/lang/${props.lang.logo}.svg`)"
         alt=""
       />
-      <h4 class="font-semibold">{{ lang.title }}</h4>
-      <p class="text-app-text mt-2 text-xs">{{ lang.detail }}</p>
+      <h4 class="font-semibold">{{ props.lang.title }}</h4>
+      <p class="text-app-text mt-2 text-xs">{{ props.lang.detail }}</p>
     </div>
   </nuxt-link>
 </template>
@@ -25,9 +25,6 @@ export default {
       type: Object,
       required: true
     }
-  },
-  data() {
-    return {}
   }
 }
 </script>

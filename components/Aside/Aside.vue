@@ -9,9 +9,6 @@
 
 <script>
 export default {
-  name: 'Aside',
-  data() {
-    return {}
-  }
+  name: 'Aside'
 }
 </script>

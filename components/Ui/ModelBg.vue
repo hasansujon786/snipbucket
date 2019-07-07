@@ -96,7 +96,7 @@ export default {
       // Clone form store to mutate the data independently
       // go to vuex if localData is null
       this.pinnedItems = JSON.parse(localStorage.getItem('pinnedItems')) || [...this.allLangList]
-      // add "pinned" key to every item in arr
+      // add "pinned" key to every item in arr if hasn't
       this.pinnedItems.map(obj => {
         if (!obj.hasOwnProperty('pinned')) {
           obj.pinned = false

@@ -1,6 +1,6 @@
 <template>
   <button
-    @mouseup="onMouseup($event)"
+    @mouseup="blurTarget($event)"
     v-bind="$attrs"
     v-on="$listeners"
     class="text-app-icon flex justify-center items-center w-10 h-10 rounded-full relative focus:outline-none"
@@ -12,11 +12,8 @@
 
 <script>
 export default {
-  data() {
-    return {}
-  },
   methods: {
-    onMouseup($event) {
+    blurTarget($event) {
       setTimeout(() => {
         $event.target.parentNode.blur()
       }, 300)
