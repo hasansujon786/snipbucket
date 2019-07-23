@@ -1,9 +1,9 @@
 <template>
-  <ul class="text-app-text disable-select">
+  <ul class="text-app-textDark disable-select pb-32">
     <li class="topic-list w-64" v-for="(topic, topicId) in topics" :key="topicId">
-      <input type="checkbox" class="hidden" :id="topic.title + 'check-box'" />
+      <input type="checkbox" checked class="hidden" :id="topic.title + 'check-box'" />
       <label
-        class="font-semibold cursor-pointer flex justify-between border-app-border px-2 py-3 border-b border-t"
+        class="font-semibold cursor-pointer flex justify-between border-app-border px-4 py-3 border-b border-t"
         :for="topic.title + 'check-box'"
       >
         <span class="text-sm">{{ topic.title }}</span>
@@ -26,12 +26,12 @@
 
       <ul class="item-list text-sm">
         <li
-          class="border-b border-app-border py-3 pl-2 pr-2 cursor-pointer"
+          class="border-b border-app-border py-3 px-4 cursor-pointer"
           v-for="(item, index) in topic.items"
           :key="index"
           @click="scrollToView(item.title)"
         >
-          {{ index + 1 }}. {{ item.title }}
+          {{ item.title }}
         </li>
       </ul>
     </li>
@@ -80,6 +80,10 @@ export default {
     border-top-width: 0;
   }
 
+  label:hover {
+    background-color: #1c2532;
+  }
+
   &:last-child .item-list li:last-child {
     border-bottom-width: 1px;
   }
@@ -102,11 +106,15 @@ input {
 }
 
 .item-list {
-  li:hover {
-    opacity: 0.75;
-  }
-  li:last-child {
-    border-width: 0;
+  li {
+    color: #90cdf4;
+    &:hover {
+      color: var(--label-hover);
+    }
+
+    &:last-child {
+      border-width: 0;
+    }
   }
 }
 

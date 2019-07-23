@@ -15,6 +15,7 @@ body {
   --text-light: #718096;
   --text-dark: #2d3748;
 
+  --label-hover: black;
   --label-bg: #e6eaf1;
   --bg: #f7fafc;
   --bg-white: #fff;
@@ -28,6 +29,7 @@ body {
 
     --bg: #283243;
     --label-bg: #202a38;
+    --label-hover: white;
     --bg-white: #202a38;
     --bg-body: #1c2532;
 
@@ -55,11 +57,13 @@ body {
   }
 
   &::-webkit-scrollbar-track {
-    background: #e2e8f0;
+    // background: #e2e8f0;
+    background: #283243;
   }
 
   &::-webkit-scrollbar-thumb {
     background: #c1c3c7;
+    @apply bg-blue-200
 
     &:hover {
       background-color: tomato;

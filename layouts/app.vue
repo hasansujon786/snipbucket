@@ -33,7 +33,7 @@
           v-show="showRightMenu"
           class="overlay-bg apply absolute top-0 left-0 w-screen h-screen"
         ></div>
-        <Aside ref="rSMenu" class="right-0 border-l-2 rSMenuCls">
+        <Aside ref="rSMenu" class="right-0 border-l-2 rSMenuCls scrolable overflow-y-scroll">
           <MenuList @link-clicked="toggleRightSideMenu" :showRightMenu="showRightMenu" />
         </Aside>
       </div>

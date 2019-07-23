@@ -1,6 +1,6 @@
 <template>
   <header
-    class="pl-4 pr-5 h-16 shadow flex justify-between items-center bg-app-bg border-b-2 border-app-border"
+    class="pr-2 md:pl-2 md:pr-4 h-16 shadow flex justify-between items-center bg-app-bg border-b-2 border-app-border"
   >
     <div class="flex items-center">
       <nuxt-link to="/">
