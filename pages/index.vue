@@ -1,5 +1,5 @@
 <template>
-  <div class="dbu">
+  <div class="home">
     <h1 class="text-5xl mt-16 mb-6 text-center">Snip Bucket</h1>
     <div ref="searchBarWrapper" class="searchBarWrapper w-11/12 sm:w-4/5 md:w-3/5 mx-auto">
       <SearchBar @submit="jumpToApp" v-model="searchInput" />
@@ -85,6 +85,12 @@ export default {
 }
 </script>
 <style scoped>
+.home {
+  background-image: url('~assets/img/home-bg-bottom.png');
+  background-position: left bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .first-card {
   @apply shadow-outline;
 }
