@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home bg-blue-00">
     <h1 class="text-5xl mt-16 mb-6 text-center">Snip Bucket</h1>
     <div ref="searchBarWrapper" class="searchBarWrapper w-11/12 sm:w-4/5 md:w-3/5 mx-auto">
       <SearchBar @submit="jumpToApp" v-model="searchInput" />
@@ -19,7 +19,13 @@
     <section class="sm:w-11/12 mt-12 mx-auto flex flex-wrap justify-center">
       <Card
         :class="{ 'first-card': i == 0 && searchInput }"
-        :key="i"
+        :key="i + 'hasan'"
+        :lang="lang"
+        v-for="(lang, i) in allLangList"
+      />
+      <!-- <Card
+        :class="{ 'first-card': i == 0 && searchInput }"
+        :key="i + 'hasan'"
         :lang="lang"
         v-for="(lang, i) in allLangList"
       />
@@ -29,6 +35,12 @@
         :lang="lang"
         v-for="(lang, i) in allLangList"
       />
+      <Card
+        :class="{ 'first-card': i == 0 && searchInput }"
+        :key="i + 'hasan'"
+        :lang="lang"
+        v-for="(lang, i) in allLangList"
+      /> -->
     </section>
 
     <div class="h-20 md:h-32"></div>
@@ -90,6 +102,7 @@ export default {
   background-position: left bottom;
   background-size: contain;
   background-repeat: no-repeat;
+  min-height: calc(100vh - 8rem);
 }
 .first-card {
   @apply shadow-outline;
