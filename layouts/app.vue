@@ -1,5 +1,5 @@
 <template>
-  <div class="font-sans relative  min-h-screen text-app-textDark">
+  <div class="font-sans relative min-h-screen text-app-textDark">
     <section class="fixed top-0 w-full">
       <Navbar @toggleMenu="toggleRightSideMenu" />
       <div class="relative">

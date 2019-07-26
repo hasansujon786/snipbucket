@@ -24,7 +24,7 @@
         </svg>
       </label>
 
-      <ul class="item-list text-sm">
+      <ul class="item-list text-gray-500 text-sm">
         <li
           class="border-b border-app-border py-3 px-4 cursor-pointer"
           v-for="(item, index) in topic.items"
@@ -107,7 +107,6 @@ input {
 
 .item-list {
   li {
-    color: #90cdf4;
     &:hover {
       color: var(--label-hover);
     }

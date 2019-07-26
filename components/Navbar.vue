@@ -1,8 +1,29 @@
 <template>
   <header
-    class="pr-2 md:pl-2 md:pr-4 h-16 shadow flex justify-between items-center bg-app-bg border-b-2 border-app-border"
+    class="pr-2 md:pl-2 md:pr-4 h-16 shadow bug flex justify-between items-center bg-app-bg border-b-2 border-app-border"
   >
+    <div class="top-0 absolute right-0">
+      <div @click="$emit('toggleMenu')" id="dragbar" class="w-2 md:hidden h-screen"></div>
+    </div>
+
     <div class="flex items-center">
+      <icon-btn class="md:hidden" v-show="$route.path !== '/'" @click="$router.go(-1)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-arrow-left"
+        >
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </icon-btn>
       <nuxt-link to="/">
         <h1 class="text-xl font-semibold ml-3">SnipBucket</h1>
       </nuxt-link>
@@ -108,6 +129,13 @@ export default {
       const theme = localStorage.getItem('data-theme') || 'light'
       document.querySelector('body').setAttribute('data-theme', theme)
       this.$store.dispatch('setTheme', theme)
+    },
+    test() {
+      console.log('item dragged')
+    },
+    dragStart($event) {
+      console.log(event)
+      event.dataTransfer.setData('Text', event.target.id)
     }
   },
   created() {
