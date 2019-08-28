@@ -8,7 +8,7 @@
       ></div>
     </transition>
     <transition
-      enter-active-class="animated fadeInUp fast"
+      enter-active-class="animated fadeInUp faster"
       leave-active-class="animated fadeOutDown faster"
     >
       <!-- Card -->
@@ -52,7 +52,7 @@
         </div>
         <!-- footer -->
         <div class="flex justify-end items-center px-8 py-5">
-          <button @click="cancel" class="text-gray-500 mr-6 font-semibold focus:outline-none hover:text-blue-500">Cancel</button>
+          <button @click="cancel" class="text-gray-600 mr-6 font-semibold focus:outline-none hover:text-blue-500">Cancel</button>
           <button @click="save" class="text-app-primary font-semibold focus:outline-none hover:text-blue-500">Save</button>
         </div>
       </section>
@@ -124,21 +124,23 @@ export default {
   margin-left: -250px;
   min-height: 256px;
 }
+.list-items:hover {
+  background-color: var(--label-bg);
+}
+
 .checkbox {
   @apply border-2 text-white font-semibold rounded-app; 
   font-size: 17px;
   background-color: #D7E7FF;
   border-color: #C3DAFF;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   &:focus, &:hover {
-    @apply  outline-none shadow-outline;
+    @apply outline-none shadow-outline;
   }
-}
-.added {
-  @apply bg-app-primary border-app-primary;
-}
-.list-items:hover {
-  background-color: var(--label-bg);
+  &.added {
+    @apply bg-app-primary border-app-primary;
+  }
+
 }
 </style>

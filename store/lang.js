@@ -1,5 +1,5 @@
-const url = 'https://raw.githubusercontent.com/hasansujon786/snipbucket/master/data'
-// const url = '/localdata'
+// const url = 'https://raw.githubusercontent.com/hasansujon786/snipbucket/master/data'
+const url = '/localdata'
 export const state = () => ({
   allLangList: [],
   selectedLang: {}

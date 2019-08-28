@@ -1,5 +1,6 @@
 <template>
   <div class="home bg-blue-00">
+    <!-- <Alert :alerts="allErrors" /> -->
     <h1 class="text-5xl mt-16 mb-6 text-center">Snip Bucket</h1>
     <div ref="searchBarWrapper" class="searchBarWrapper w-11/12 sm:w-4/5 md:w-3/5 mx-auto">
       <SearchBar @submit="jumpToApp" v-model="searchInput" />
@@ -54,7 +55,14 @@ import SearchBar from '~/components/SearchBar.vue'
 export default {
   name: 'app',
   data: () => ({
-    searchInput: ''
+    searchInput: '',
+    allErrors: [
+      {
+        name: 'Error name',
+        body:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem blanditiis sunt, nulla fugit temporibus fugiat error provident sapiente ipsa inventore'
+      }
+    ]
   }),
   computed: {
     allLangList() {

@@ -27,6 +27,8 @@ button {
   transition: background-color .3s ease-in;
 }
 button:focus {
-  background-color: rgba(197, 197, 197, 0.6);
+  /* background-color: rgba(197, 197, 197, 0.6); */
+  /* @apply bg-gray-900; */
+  background-color: var(--border-color);
 }
 </style>

@@ -2,6 +2,7 @@
   <div class="font-sans relative min-h-screen text-app-textDark">
     <section class="fixed top-0 w-full">
       <Navbar @toggleMenu="toggleRightSideMenu" />
+      <ui-alertBG></ui-alertBG>
       <div class="relative">
         <Aside class="left-0 border-r-2 hidden md:block">
           <PinnedItems :pinnedItems="pinnedItems" />
@@ -47,6 +48,7 @@
 
 <script>
 import Navbar from '~/components/Navbar.vue'
+import AlertBGVue from '../components/Ui/AlertBG.vue'
 import Aside from '~/components/Aside/Aside.vue'
 import MenuList from '~/components/Aside/MenuList.vue'
 import PinnedItems from '~/components/Aside/PinnedItems.vue'
@@ -87,7 +89,8 @@ export default {
     Aside,
     MenuList,
     PinnedItems,
-    ModelBg
+    ModelBg,
+    uiAlertBG: AlertBGVue
   },
   created() {
     this.$store.dispatch('lang/getAllLangList')
@@ -163,3 +166,4 @@ body {
   }
 }
 </style>
+<!-- the only thing that stays the same is that things are always changing. -->
