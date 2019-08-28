@@ -55,8 +55,8 @@ export default {
   created() {
     // this.$store.dispatch('lang/getSelectedLang', this.$route.params.langId)
 
-    // const url = 'https://raw.githubusercontent.com/hasansujon786/snipbucket/master/data'
-    const url = '/localdata'
+    const url = 'https://raw.githubusercontent.com/hasansujon786/snipbucket/master/data'
+    // const url = '/localdata'
     this.$axios
       .$get(`${url}/lang/${this.$route.params.langId}.json`)
       .then(data => {
