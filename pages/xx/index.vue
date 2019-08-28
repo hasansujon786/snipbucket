@@ -17,7 +17,7 @@
 <script>
 export default {
   // layout: 'app',
-  name: 'app',
+  name: 'app2',
 
   data() {
     return {

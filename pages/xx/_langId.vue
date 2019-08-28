@@ -40,20 +40,31 @@ import 'prismjs'
 
 export default {
   layout: 'app',
-  name: 'langId',
+  name: 'langId2',
   data: () => ({
-    code: 'const a = b'
+    lang: {}
   }),
   computed: {
-    lang() {
-      return this.$store.getters['lang/selectedLang']
-    }
+    // lang() {
+    //   return this.$store.getters['lang/selectedLang']
+    // }
   },
   components: {
     Prism
   },
   created() {
-    this.$store.dispatch('lang/getSelectedLang', this.$route.params.langId)
+    // this.$store.dispatch('lang/getSelectedLang', this.$route.params.langId)
+
+    // const url = 'https://raw.githubusercontent.com/hasansujon786/snipbucket/master/data'
+    const url = '/localdata'
+    this.$axios
+      .$get(`${url}/lang/${this.$route.params.langId}.json`)
+      .then(data => {
+        this.lang = data
+      })
+      .catch(err => {
+        console.log('err', err)
+      })
   },
   filters: {
     splitJoin(text) {
