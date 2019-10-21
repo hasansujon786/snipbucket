@@ -5,7 +5,6 @@
         class="px-4 h-12 w-full bg-app-bgWhite border border-app-border shadow rounded-full 
         focus:outline-none focus:shadow-md"
         type="text"
-        placeholder="Searh here"
         onfocus="this.placeholder=''"
         onblur="this.placeholder='Search here'"
         v-bind="$attrs"
