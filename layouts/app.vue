@@ -2,7 +2,7 @@
   <div class="font-sans relative min-h-screen text-app-textDark">
     <section class="fixed top-0 w-full">
       <Navbar @toggleMenu="toggleRightSideMenu" />
-      <ui-alertBG></ui-alertBG>
+      <!-- <ui-alertBG></ui-alertBG> -->
       <div class="relative">
         <Aside class="left-0 border-r-2 hidden md:block">
           <PinnedItems :pinnedItems="pinnedItems" />

@@ -116,6 +116,9 @@ export default {
       return this.$store.getters.getTheme
     }
   },
+  created() {
+    this.detectThemeOnLoad()
+  },
   methods: {
     toggleTheme() {
       let theme
@@ -126,7 +129,7 @@ export default {
       this.$store.dispatch('setTheme', theme)
     },
     detectThemeOnLoad() {
-      const theme = localStorage.getItem('data-theme') || 'light'
+      const theme = localStorage.getItem('data-theme') || 'dark'
       document.querySelector('body').setAttribute('data-theme', theme)
       this.$store.dispatch('setTheme', theme)
     },
@@ -137,9 +140,6 @@ export default {
       console.log(event)
       event.dataTransfer.setData('Text', event.target.id)
     }
-  },
-  created() {
-    this.detectThemeOnLoad()
   }
 }
 </script>

@@ -1,5 +1,5 @@
 export const state = () => ({
-  theme: '',
+  theme: 'dark',
   alerts: []
 })
 // mutations ==============================

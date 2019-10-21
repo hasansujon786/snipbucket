@@ -11,7 +11,12 @@
         :key="alert._id"
       ></ui-alert>
     </transition-group>
-    <button @click="add">add</button>
+    <button
+      class="bg-app-primary rounded-full w-8 h-8 font-bold text-2xl flex flex-col justify-center items-center"
+      @click="add"
+    >
+      +
+    </button>
   </div>
 </template>
 

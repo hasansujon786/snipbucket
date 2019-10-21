@@ -1,7 +1,7 @@
 <template>
   <div class="font-sans min-h-screen text-app-textDark">
     <Navbar />
-    <ui-alertBG></ui-alertBG>
+    <!-- <ui-alertBG></ui-alertBG> -->
     <nuxt />
   </div>
 </template>
