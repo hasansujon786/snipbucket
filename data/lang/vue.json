@@ -89,6 +89,12 @@
           "description": "",
           "code": "<input\n  type=\"text\"\n  placeholder=\"Searh here\"\n  v-bind=\"$attrs\"\n  @input=\"$emit('input', $event.target.value)\"\n/>",
           "type": "javascript"
+        },
+                {
+          "title": "Custorm input (Perfect)",
+          "description": "",
+          "code": "<template>\n  <input\n    v-bind=\"$attrs\"\n    v-bind:value=\"value\"\n    v-on=\"inputListeners\"\n    class=\"w-full text-sm text-gray-600 px-5 h-10 outline-none\n      focus:text-gray-900 focus:shadow-outline\"\n  />\n</template>\n\n<script>\nexport default {\n  name: 'baseInput',\n  props: ['label', 'value'],\n  computed: {\n    inputListeners: function() {\n      var vm = this\n      // `Object.assign` merges objects together to form a new object\n      return Object.assign(\n        {},\n        // We add all the listeners from the parent\n        this.$listeners,\n        // Then we can add custom listeners or override the\n        // behavior of some listeners.\n        {\n          // This ensures that the component works with v-model\n          input: function(event) {\n            vm.$emit('input', event.target.value)\n          }\n        }\n      )\n    }\n  }\n}\n</script>\n",
+          "type": "javascript"
         }
       ]
     }
